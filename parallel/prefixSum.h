@@ -19,7 +19,7 @@ namespace ps
         int y;
         for (int k = 0; k < static_cast<int>(log2(size)); ++k)
         {
-            int power = static_cast<int>(pow(2, k));
+            int power = 1 << k;
             int destination = rank ^ power;
             //std::cout << "Rank: " << rank << ", partner" << destination << ", K: " << k << std::endl;
             MPI_Sendrecv(&sigma, 1, MPI_INT, destination, 0, &y, 1, MPI_INT, destination, MPI_ANY_TAG, comm, MPI_STATUS_IGNORE);
